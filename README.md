@@ -15,5 +15,5 @@ A **Unity Editor Tool** that allows you to create **box colliders** by selecting
 ✅ Supports **real-time editing** before collider generation.  
 
 ---
-- Place the script inside your Unity project under
-- In unity : Tools → Box Collider Curve Generator.
+- Place the script inside your Unity project.
+- In unity : Tools → Box Collider Generator.
