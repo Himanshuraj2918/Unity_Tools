@@ -6,9 +6,9 @@ public class BoxCollidersGenerator : EditorWindow
 {
     private List<Vector3> points = new List<Vector3>();
     private List<string> colliderNames = new List<string>(); 
-    private string objectName = "CurveCollider";
+    private string objectName = "Box_Collider";
 
-    [MenuItem("Tools/Box Collider Curve Generator")]
+    [MenuItem("Tools/Box Collider Generator")]
     public static void ShowWindow()
     {
         GetWindow<BoxCollidersGenerator>("Box Collider Generator");
