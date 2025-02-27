@@ -5,20 +5,19 @@ using System.Collections.Generic;
 public class BoxCollidersGenerator : EditorWindow
 {
     private List<Vector3> points = new List<Vector3>();
-    private List<string> colliderNames = new List<string>(); // Stores names for child colliders
+    private List<string> colliderNames = new List<string>(); 
     private string objectName = "CurveCollider";
 
     [MenuItem("Tools/Box Collider Curve Generator")]
     public static void ShowWindow()
     {
-        GetWindow<BoxCollidersGenerator>("Box Collider Curve Generator");
+        GetWindow<BoxCollidersGenerator>("Box Collider Generator");
     }
 
 private void OnGUI()
 {
     GUILayout.Label("Parent Object", EditorStyles.boldLabel);
-    objectName = EditorGUILayout.TextField("Parent Name", objectName); // Editable parent name
-
+    objectName = EditorGUILayout.TextField("Parent Name", objectName); 
     GUILayout.Space(10);
     GUILayout.Label("Selected Points & Collider Names", EditorStyles.boldLabel);
 
@@ -27,7 +26,7 @@ private void OnGUI()
         EditorGUILayout.BeginHorizontal();
         
         points[i] = EditorGUILayout.Vector3Field($"Point {i + 1}", points[i]);
-        colliderNames[i] = EditorGUILayout.TextField(colliderNames[i]); // Now it's editable
+        colliderNames[i] = EditorGUILayout.TextField(colliderNames[i]); 
 
         EditorGUILayout.EndHorizontal();
     }
@@ -62,7 +61,7 @@ private void OnGUI()
                 clickedPoint.y = 1f; // Keep Y consistent
 
                 points.Add(clickedPoint);
-                colliderNames.Add($"Collider_{points.Count}"); // Default name, user can edit it
+                colliderNames.Add($"Collider_{points.Count}"); 
 
                 Debug.Log($"Point {points.Count} Selected: {clickedPoint}");
 
@@ -89,9 +88,8 @@ private void OnGUI()
             Vector3 direction = (end - start).normalized;
 
             Quaternion rotation = Quaternion.LookRotation(direction);
-            rotation.eulerAngles = new Vector3(0, rotation.eulerAngles.y, 0); // Lock rotation to Y-axis only
-
-            GameObject box = new GameObject(colliderNames[i]); // Assign user-defined name
+            rotation.eulerAngles = new Vector3(0, rotation.eulerAngles.y, 0); 
+            GameObject box = new GameObject(colliderNames[i]); 
             box.transform.position = center;
             box.transform.rotation = rotation;
             box.transform.parent = parentObject.transform;
